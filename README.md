@@ -1,15 +1,17 @@
 # Web Lab Scanner
 
-A session-aware Python CLI scanner for lab web applications such as DVWA, Juice Shop, and similar OWASP-style training targets.
+A session-aware Python CLI scanner for web security lab environments, currently tested against OWASP Juice Shop and controlled mock targets.
 
 ## Overview
 
-Web Lab Scanner was built to practice web security engineering through a real tool instead of one-off scripts. It combines HTTP interaction, limited crawling, security header analysis, form parsing, CSRF heuristics, reflected XSS probing, SQL error probing, structured findings, and report generation.
+Web Lab Scanner is a Python-based CLI tool built to practice web security engineering through a real project instead of one-off scripts. The scanner combines HTTP interaction, limited internal crawling, security header analysis, cookie checks, HTML form parsing, CSRF heuristics, reflected XSS probing, SQL error probing, and report generation.
 
-## Features
+The project is designed for lab-only use and focuses on controlled, explainable security checks rather than full exploitation.
+
+## Key Features
 
 - Session-aware scanning with a shared HTTP session
-- Cookie and custom header injection
+- Custom cookie and header injection
 - Same-host internal crawling with depth and page limits
 - Security header analysis
 - Cookie flag analysis
@@ -18,8 +20,15 @@ Web Lab Scanner was built to practice web security engineering through a real to
 - Reflected XSS indicator probing
 - SQL error indicator probing
 - Structured findings with severity, confidence, evidence, and recommendations
-- JSON and HTML reporting
+- JSON and HTML report generation
 - Unit and integration tests
+
+## Target Environment
+
+This project is currently tested against:
+
+- OWASP Juice Shop
+- Controlled mock HTTP targets used in integration tests
 
 ## Project Structure
 
@@ -88,9 +97,9 @@ Web Lab Scanner was built to practice web security engineering through a real to
       json: examples/sample_report.json
       html: examples/sample_report.html
 
-## Sample Findings
+## Example Findings
 
-Example output from a Juice Shop lab scan:
+Example output from a Juice Shop scan may include:
 
 - Missing Content-Security-Policy header
 - Missing Referrer-Policy header
@@ -102,7 +111,7 @@ Run the full test suite with:
 
     pytest
 
-Current local milestone result:
+Current project status:
 
 - 20 tests passing
 - Unit tests for analyzers and helpers
@@ -120,11 +129,11 @@ Current local milestone result:
 
 ### HTML report
 
-![HTML report](docs/screenshots/sample_report.png)
+![HTML report](docs/screenshots/html-report.png)
 
 ## Architecture
 
-See `docs/architecture.md` for the current system design and component breakdown.
+See `docs/architecture.md` for the current component breakdown and scanning flow.
 
 ## Current Limitations
 
@@ -133,7 +142,7 @@ See `docs/architecture.md` for the current system design and component breakdown
 - Reflected XSS and SQLi checks are heuristic indicators, not exploit confirmation.
 - Root-page scans against modern SPAs may produce fewer crawl results than traditional server-rendered apps.
 
-## Safety
+## Safety Notice
 
 This tool is intended only for:
 
@@ -141,7 +150,7 @@ This tool is intended only for:
 - Training targets
 - Systems you own or are explicitly authorized to test
 
-## Status
+## Current Status
 
 This project currently includes:
 
@@ -155,7 +164,7 @@ This project currently includes:
 
 ## Roadmap
 
-Planned next improvements:
+Potential next improvements:
 
 - Broader multi-page analysis beyond the initial response
 - Richer HTML report styling
